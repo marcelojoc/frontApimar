@@ -4,9 +4,31 @@
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
     </div>
-    <router-view/>
+    <router-view />
   </div>
 </template>
+
+<script>
+// @ is an alias to /src
+import api from "@/api/auth";
+
+export default {
+  name: "App",
+  data() {
+    return {
+      changeTest: 0,
+    }
+  },
+
+  methods: {},
+
+  created: async function() {
+    let test = await api.getCharacters();
+    console.log("creadoooooooooo");
+    console.log(test.data.data);
+  },
+};
+</script>
 
 <style>
 #app {
