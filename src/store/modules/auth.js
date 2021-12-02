@@ -19,9 +19,12 @@ export default {
   },
   actions: {
 
+    
         // Creamos la función getToken, que recibe como parámetro el objeto `context`
     // Gracias a la asignación de desestructuración de JavaScript, recogemos `commit` como argumento
     getToken ({ commit }) {
+
+      commit('loading/SET_LOADING', true, { root: true })
         // Pasos:
         //  1 - Hacer llamada HTTP para obtener el token
         //  2 - Si va OK, guardar el token en 'accessToken'. Continuar el flujo normal
