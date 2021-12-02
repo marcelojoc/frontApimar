@@ -3,7 +3,7 @@
   <div class="loading-wrapper text-center py-5">
     <div class="spinner-wrapper w-100">
       <!--Componente Spinner de Bootstrap 🔄-->
-      <b-spinner class="spinner" label="Loading..." :type="type" :variant="variant"/>
+      <b-spinner class="spinner" label="" :type="type" :variant="variant"/>
     </div>
     <h1 class="my-5">Loading...</h1>
   </div>

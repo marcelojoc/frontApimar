@@ -3,10 +3,10 @@
 
 
     <LoadLayout v-if="isLoading">
-      <BaseLoading/>
+      <BaseLoading variant="danger"/>
     </LoadLayout>
 
-    <MainLayout v-else/>
+    <MainLayout v-else />
 
 
 </div>

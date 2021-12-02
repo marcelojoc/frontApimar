@@ -6,21 +6,23 @@ import api from "@/api/auth";
 export default {
   namespaced: true,
   state: {
-
+    data: null,
     accessToken : null
   },
   mutations: {
 
     SET_ACCESS_TOKEN (state, payload) {
         state.accessToken = payload
-    }
+    },
+
+    SET_DATA (state, payload) {
+      state.accessToken = payload
+  }
 
 
   },
   actions: {
-
-    
-        // Creamos la función getToken, que recibe como parámetro el objeto `context`
+    // Creamos la función getToken, que recibe como parámetro el objeto `context`
     // Gracias a la asignación de desestructuración de JavaScript, recogemos `commit` como argumento
     getToken ({ commit }) {
 
@@ -34,11 +36,12 @@ export default {
         api.getCharacters()
         .then(({ data }) => {
             // Paso 2: Guardamos el valor del token llamando a nuestra mutación 🍔 
-            commit('SET_ACCESS_TOKEN', data.data.results)
+            commit('SET_DATA', data.data.results)
+            commit('loading/SET_LOADING', false, { root: true })
         })
         .catch((err) => {
             // Paso 3: En caso de error limpiamos el token
-            commit('SET_ACCESS_TOKEN', null)
+            commit('SET_DATA', null)
             console.log('Error OAuth: ', err)
         })
         .finally(() => {
