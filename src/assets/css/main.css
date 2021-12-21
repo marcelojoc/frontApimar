@@ -1,1 +1,8 @@
+@font-face {
+  font-family: ARBONNIE;
+  src: local("ARBONNIE"), local("ARBONNIE"), url("../fonts/ARBONNIE.ttf");
+}
 
+.arbonie {
+  font-family: ARBONNIE;
+}

@@ -1,8 +1,8 @@
 import axios from "axios";
 
-const apiKey = "3d43da18240a802341f993d06e9ec0c0";
+const apiKey = process.env.VUE_APP_KEY;
 
-const API_URL = `https://gateway.marvel.com:443/v1/public/`;
+const API_URL = process.env.VUE_APP_LINK;
 
 async function getCharacters() {
   // En este objeto llamado 'config' vamos a insertar algunos parámetros de configuración

@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-
+<h3 class="arbonie">hola pibeeee</h3>
 
     <LoadLayout v-if="isLoading">
       <BaseLoading variant="danger"/>

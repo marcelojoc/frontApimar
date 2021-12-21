@@ -1,6 +1,7 @@
 <template>
   <div class="header-bar">
     <div class="navigation-bar">
+      <h1 class="arbonie">{{enviroment}}</h1>
       <b-navbar toggleable="lg" type="dark" variant="dark">
         <b-navbar-brand :to="{ name: 'Home' }">
           <img src="https://picsum.photos/300/300/?image=3" alt="D3" width="30">
@@ -15,6 +16,12 @@
 <script>
 
 export default {
-  name: 'HeaderBar'
+  name: 'HeaderBar',
+
+    data() {
+    return {
+      enviroment: process.env.VUE_APP_ENVIROMENT,
+    }
+  },
 }
 </script>
