@@ -27,16 +27,16 @@
           <b-form-group id="input-group-3" label="Region:" label-for="input-region">
             <b-form-select
               id="input-region"
-              v-model="form.region"
+              v-model=form.option
               size="lg"
-              :options="regions"
+              :options="optional"
               required
             />
           </b-form-group>
 
           <!-- Botón envío -->
           <div class="d-flex justify-content-end mt-5">
-            <b-button type="submit" variant="primary" size="lg">Submit</b-button>
+            <b-button type="submit"  v-if="selected"  variant="primary" size="lg" >Submit</b-button>
           </div>
 
         </b-form>
@@ -48,23 +48,31 @@
 
 
 <script>
+
+import {optionals} from "@/utils/optionals.util"
+
+
 export default {
   name: 'homeform',
   data () {
     return {
       form: {
         battleTag: '',
-        region: 'eu'
-      }
+        option: ''
+      },
+      optional: optionals,
+      selected: false
     }
   },
   computed: {
 
+
+
   },
   methods: {
     onSubmit () {
-      const { region, battleTag } = this.form
-      this.$router.push({ name: 'Profile', params: { region, battleTag: battleTag.replace('#', '-') } })
+      const { option, battleTag } = this.form
+      //this.$router.push({ name: 'Profile', params: { region, battleTag: battleTag.replace('#', '-') } })
     }
   }
 }
