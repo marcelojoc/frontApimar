@@ -3,14 +3,16 @@
    
    <home-title/>
    <home-form/> 
+
+
     
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import homeTitle from "@/views/home/HomeTitle"
-import homeForm from '@/views/home/HomeForm'
+import homeTitle from "@/views/Home/HomeTitle"
+import homeForm from '@/views/Home/HomeForm'
 
 export default {
   name: 'Home',

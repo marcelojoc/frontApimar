@@ -9,6 +9,8 @@
         <FootLinks/>
       </div>
       <div class="col-sm-6">
+
+        {{test}}
         <MadeByFoot/>
       </div>
     </div>
@@ -20,6 +22,7 @@
 import MadeByFoot from './MadeByFoot'
 import PoweredByFoot from './PoweredByFoot'
 import FootLinks from './FootLinks'
+import { mapState} from 'vuex'
 
 export default {
   name: 'FooterBar',
@@ -53,6 +56,19 @@ export default {
         }
       ]
     }
-  }
+  },
+
+    computed: {
+    ...mapState('stadium', {
+      test: 'test',
+      cliente: 'cliente'
+    }),
+
+
+  },
+
+  methods: {
+
+  },
 }
 </script>

@@ -4,14 +4,14 @@
     <div class="row">
       <div class="col-12 col-md-8 offset-md-2">
         <!-- Formulario -->
-        <b-form @submit.prevent="onSubmit">
+        <b-form @submit.prevent="searchItems">
 
           <!-- Grupo 1 (Input texto) -->
           <b-form-group
             id="input-group-1"
             label="BattleTag:"
             label-for="input-text"
-            description="Format: YourProfile#1234"
+            description="Busca tu heroe"
           >
             <b-form-input
               id="input-text"
@@ -36,12 +36,32 @@
 
           <!-- Botón envío -->
           <div class="d-flex justify-content-end mt-5">
-            <b-button type="submit"  v-if="selected"  variant="primary" size="lg" >Submit</b-button>
+            <b-button type="submit"  v-if="form.option"  variant="primary" size="lg"  >Submit</b-button>
           </div>
 
         </b-form>
       </div>
     </div>
+
+
+  <b-row>
+    <b-col>1 of 3</b-col>
+    <b-col>2 of 3</b-col>
+    <b-col>3 of 3</b-col>
+    <b-col>3 of 3</b-col>
+    <b-col>3 of 3</b-col>
+
+
+  </b-row>
+
+  <b-row>
+    <b-col>1 of 3</b-col>
+    <b-col>2 of 3</b-col>
+    <b-col>3 of 3</b-col>
+    <b-col>3 of 3</b-col>
+    <b-col>3 of 3</b-col>
+
+  </b-row>
 
   </div>
 </template>
@@ -50,6 +70,7 @@
 <script>
 
 import {optionals} from "@/utils/optionals.util"
+import api from "@/api/auth"
 
 
 export default {
@@ -61,7 +82,15 @@ export default {
         option: ''
       },
       optional: optionals,
-      selected: false
+      selected: false,
+      list : [],
+              fields: ['first_name', 'last_name', 'age'],
+        items: [
+          {  age: 40, first_name: 'Dickerson', last_name: 'Macdonald' },
+          {  age: 21, first_name: 'Larsen', last_name: 'Shaw' },
+          {  age: 89, first_name: 'Geneva', last_name: 'Wilson' },
+          {  age: 38, first_name: 'Jami', last_name: 'Carney' }
+        ]
     }
   },
   computed: {
@@ -70,9 +99,21 @@ export default {
 
   },
   methods: {
-    onSubmit () {
-      const { option, battleTag } = this.form
-      //this.$router.push({ name: 'Profile', params: { region, battleTag: battleTag.replace('#', '-') } })
+    // onSubmit () {
+    //   const { option, battleTag } = this.form
+    //   this.$router.push({ name: 'Profile', params: { option, battleTag: battleTag.replace('#', '-') } })
+    // },
+
+    /**
+     * Este metodo hace  la busqueda de el campo de search
+     */
+    async searchItems(){
+
+      const valores = await api.getCharacters();
+
+      console.log(valores);
+      this.list = valores
+
     }
   }
 }

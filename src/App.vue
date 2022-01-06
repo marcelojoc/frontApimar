@@ -4,9 +4,9 @@
     <LoadLayout v-if="isLoading">
       <BaseLoading variant="danger"/>
     </LoadLayout>
-
+      
     <MainLayout v-else />
-
+      
 
 </div>
 
@@ -17,10 +17,10 @@
 //import api from "@/api/auth";
 
 import { mapState } from 'vuex'
-
 import LoadLayout from './layouts/LoadLayout'
 import MainLayout from './layouts/MainLayout'
 import BaseLoading from '@/components/BaseLoading.vue'
+//import Api from '@/api/auth'
 
 export default {
   name: "App",
@@ -39,15 +39,21 @@ export default {
     // Uso: mapState(moduleName, { state })
     ...mapState('loading', {
       isLoading: 'isLoading'
-    })
+    }
+    
+    
+    
+    )
   },
 
   methods: {},
 
-  created: async function() {
-    // let test = await api.getCharacters();
+  created:  function() {
+
+
+    // let test = await Api.getCharacters();
     // console.log("creadoooooooooo");
-    // console.log(test.data.data);
+    // console.log(test);
   },
 };
 </script>
@@ -60,6 +66,6 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #fff;
-  background-color: #15202b;
+  background-color: #24384d;
 }
 </style>
