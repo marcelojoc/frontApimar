@@ -1,9 +1,9 @@
 import Api from "@/api/api";
 
-async function getCharacters() {
+async function getCharacters(search) {
   // En este objeto llamado 'config' vamos a insertar algunos parámetros de configuración
   // que necesitamos para hacer la llamada. 🌵
-  const query = 'characters'
+  const query = 'characters?nameStartsWith='+ search
   // 🔥Hacemos una peticion POST
   // 🔥Le pasamos la URL como primer parámetro
   // 🔥Como segundo, el body, que es un FormData

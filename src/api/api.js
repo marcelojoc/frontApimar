@@ -15,4 +15,5 @@ async function apiConnectionGeneral(query){
   
 }
 
+
 export default { apiConnectionGeneral };

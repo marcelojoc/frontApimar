@@ -6,7 +6,25 @@ export default {
     },
     mutations: {
 
-        
+      SET_PRODUCT(state, payload) {
+        state.test = payload;
+       },
+
+    },
+
+    actions:{
+
+      test(){
+
+        console.log('action desde  StoreStadium');
+      },
+
+      changeTest({ commit }){
+
+        console.log('action desde  Store Cambioando el test');
+        commit("SET_PRODUCT", 'action desde  StoreStadium');
+      }
+
 
     },
 

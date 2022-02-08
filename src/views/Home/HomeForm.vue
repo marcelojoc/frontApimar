@@ -19,7 +19,7 @@
               type="text"
               size="lg"
               required
-              placeholder="BattleTag"
+              placeholder="Nombre del personaje"
             />
           </b-form-group>
 
@@ -35,8 +35,8 @@
           </b-form-group>
 
           <!-- Botón envío -->
-          <div class="d-flex justify-content-end mt-5">
-            <b-button type="submit"  v-if="form.option"  variant="primary" size="lg"  >Submit</b-button>
+          <div class="d-flex justify-content-end mt-5 mb-5">
+            <b-button type="submit"  v-if="form.option"  variant="primary" size="lg"  >BUscar</b-button>
           </div>
 
         </b-form>
@@ -44,21 +44,87 @@
     </div>
 
 
-  <b-row>
-    <b-col>1 of 3</b-col>
-    <b-col>2 of 3</b-col>
-    <b-col>3 of 3</b-col>
-    <b-col>3 of 3</b-col>
-    <b-col>3 of 3</b-col>
+  <b-row class="mb-2">
+    <b-col>
+        <b-card
+          title="Nombre del personaje "
+          img-src="https://picsum.photos/200/200/?image=27"
+          img-alt="Image"
+          img-top
+          tag="article"
+          style="max-width: 15rem;"
+          class="mb-2"
+          >
 
 
+          <b-button href="#" variant="primary">Go somewhere</b-button>
+        </b-card>
+    </b-col>
+    <b-col>        
+      <b-card
+          title="Card Title"
+          img-src="https://picsum.photos/200/200/?image=25"
+          img-alt="Image"
+          img-top
+          tag="article"
+          style="max-width: 15rem;"
+          class="mb-2"
+          >
+
+
+          <b-button href="#" variant="primary">Go somewhere</b-button>
+        </b-card></b-col>
+    <b-col>        
+      <b-card
+          title="Card Title"
+          img-src="https://picsum.photos/200/200/?image=45"
+          img-alt="Image"
+          img-top
+          tag="article"
+          style="max-width: 15rem;"
+          class="mb-2"
+          >
+
+
+          <b-button href="#" variant="primary">Go somewhere</b-button>
+        </b-card>
+    </b-col>
+    <b-col>        
+      <b-card
+          title="Card Title"
+          img-src="https://picsum.photos/200/200/?image=45"
+          img-alt="Image"
+          img-top
+          tag="article"
+          style="max-width: 15rem;"
+          class="mb-2"
+          >
+
+
+          <b-button href="#" variant="primary">Go somewhere</b-button>
+        </b-card>
+    </b-col>
+
+    <b-col>        
+      <b-card
+          title="Card Title"
+          img-src="https://picsum.photos/200/200/?image=45"
+          img-alt="Image"
+          img-top
+          tag="article"
+          style="max-width: 15rem;"
+          class="mb-2"
+          >
+
+
+          <b-button href="#" variant="primary">Go somewhere</b-button>
+        </b-card>
+    </b-col>
   </b-row>
 
   <b-row>
     <b-col>1 of 3</b-col>
     <b-col>2 of 3</b-col>
-    <b-col>3 of 3</b-col>
-    <b-col>3 of 3</b-col>
     <b-col>3 of 3</b-col>
 
   </b-row>
@@ -70,7 +136,7 @@
 <script>
 
 import {optionals} from "@/utils/optionals.util"
-import api from "@/api/auth"
+import api from "@/api/auth";
 
 
 export default {
@@ -109,10 +175,23 @@ export default {
      */
     async searchItems(){
 
-      const valores = await api.getCharacters();
+      const { option, battleTag } = this.form;
 
-      console.log(valores);
-      this.list = valores
+      console.log(option, battleTag);
+
+      try {
+        const valores = await api.getCharacters(battleTag)
+        console.log(valores);
+      } catch (error) {
+
+        console.log('error: ' + error);
+      // this.list = valores
+      }
+      
+
+      // const valores = await api.getCharacters();
+
+
 
     }
   }
